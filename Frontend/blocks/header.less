@@ -1,0 +1,133 @@
+// main: ../style.less
+.header {
+    box-sizing: border-box;
+    height: 100%;
+    height: 56px;
+    position: sticky;
+    background-color: @header-color;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    box-sizing: border-box;
+    width: 220px;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.logo-text {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font: bold;
+    font-size: 40px;
+    text-align: left;
+    font-size: 50;
+    color: white;
+    margin: 0;
+}
+
+.search-line {
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 1200px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.search {
+    box-sizing: border-box;
+    margin-left: 24px;
+    margin-right: 24px;
+    width: auto;
+    background-color: lighten(@header-color, 15%);
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+}
+
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1052px;
+    background-color: lighten(@header-color, 15%);
+    text-decoration-style: solid;
+    border-style: solid;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-right-width: 0px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    text-align: start;
+    padding: 6px;
+    padding-top: 11px;
+}
+
+::placeholder {
+    color: white;
+    font-size: 20px;
+}
+
+.search-button {
+    box-sizing: border-box;
+    float: right;
+    width: 100px;
+    height: 100%;
+    background-color: @button-color;
+    color: white;
+    border-bottom-color: white;
+    border-top-color: white;
+    border-right-color: white;
+    border-left-color: @button-color;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    border-width: 0px;
+    font-size: 20px;
+}
+
+.login {
+    box-sizing: border-box;
+    width: 220px;
+    min-width: 220px;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.login-button {
+    color: @button-color;
+    box-sizing: border-box;
+    margin-left: 7px;
+    margin-right: 3px;
+    width: 100px;
+    height: 100%;
+    border-color: @button-color;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 3px;
+    background-color: @header-color;
+    font-size: 20px;
+}
+
+.singup-button {
+    color: white;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100%;
+    margin-left: 3px;
+    border-color: @button-color;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 2px;
+    background-color: @button-color;
+    font-size: 20px;
+}
