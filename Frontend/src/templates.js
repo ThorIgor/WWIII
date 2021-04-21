@@ -1,5 +1,10 @@
-
+/**
+ * Created by chaika on 02.02.16.
+ */
 var fs = require('fs');
 var ejs = require('ejs');
 
-exports.MainPage_OneTest = ejs.compile(fs.readFileSync('./Frontend/templates/MainPage_OneTest.ejs', "utf8"));
+
+exports.PizzaMenu_OneItem = ejs.compile(fs.readFileSync('./Frontend/templates/PizzaMenu_OneItem.ejs', "utf8"));
+
+exports.PizzaCart_OneItem = ejs.compile(fs.readFileSync('./Frontend/templates/PizzaCart_OneItem.ejs', "utf8"));
