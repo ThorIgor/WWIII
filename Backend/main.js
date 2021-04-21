@@ -12,15 +12,11 @@ function configureEndpoints(app) {
 
     //Налаштування URL за якими буде відповідати сервер
     //Отримання списку піц
-    app.get('/api/get-pizza-list/', api.getPizzaList);
-    app.post('/api/create-order/', api.createOrder);
+    app.get('/api/get-pizza-list/', api.getTestList);
 
     //Сторінки
     //Головна сторінка
     app.get('/', pages.mainPage);
-
-    //Сторінка замовлення
-    app.get('/order.html', pages.orderPage);
 
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/www')));

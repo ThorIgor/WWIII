@@ -31,7 +31,7 @@ function backendPost(url, data, callback) {
     })
 }
 
-exports.getPizzaList = function(callback) {
+exports.getTestList = function(callback) {
     backendGet("/api/get-shortTest-list/", callback);
 };
 

@@ -6,16 +6,16 @@
 var ejs = require('ejs');
 
 
-exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n<div class=\"col-md-6 col-lg-4 pizza-card\">\n    <div class=\"thumbnail\">\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n        <% if(pizza.is_new) { %>\n        <span class=\"label label-danger\">Нова</span>\n        <% } else if(pizza.is_popular) {%>\n        <span class=\"label label-success\">Популярна</span>\n        <% } %>\n\n        <div class=\"caption\">\n            <span class=\"title\"><%= pizza.title %></span>\n            <div class=\"type\"><%= pizza.type %></div>\n            <div class=\"description\">\n                <%= getIngredientsArray(pizza).join(\", \") %>\n            </div>\n        </div>\n\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\n        <button class=\"btn btn-primary buy-big\">Купити велику</button>\n    </div>\n</div>");
+exports.TestMenu_OneItem = ejs.compile("\n<div> Hello world </div>");
 
-exports.PizzaCart_OneItem = ejs.compile("<div>\n    <%= pizza.title %> (<%= size %>)\n    <div>Ціна: <%= pizza[size].price %> грн.</div>\n    <div>\n        <button class=\"btn btn-danger minus\">-</button>\n        <span class=\"label label-default\"><%= quantity %></span>\n        <button class=\"btn btn-success plus\">+</button>\n    </div>\n</div>");
 
-},{"ejs":7}],2:[function(require,module,exports){
+
+},{"ejs":6}],2:[function(require,module,exports){
 /**
  * Created by diana on 12.01.16.
  */
 
-var pizza_info = [
+var test_info = [
     {
         id:1,
         icon:'assets/images/pizza_7.jpg',
@@ -195,137 +195,36 @@ module.exports = pizza_info;
 
 $(function(){
     //This code will execute when the page is ready
-    var PizzaMenu = require('./pizza/PizzaMenu');
-    var PizzaCart = require('./pizza/PizzaCart');
+    var PizzaMenu = require('./pizza/TestMenu');
     var Pizza_List = require('./Test_List');
 
-    PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
 
 });
-},{"./Test_List":2,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
+},{"./Test_List":2,"./pizza/TestMenu":4}],4:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
-
-//Перелік розмірів піци
-var PizzaSize = {
-    Big: "big_size",
-    Small: "small_size"
-};
-
-//Змінна в якій зберігаються перелік піц в кошику
-var Cart = [];
+var Test_List = require('../Test_List');
 
 //HTML едемент куди будуть додаватися піци
-var $cart = $("#cart");
-
-function addToCart(pizza, size) {
-    //Додавання однієї піци в кошик покупок
-
-    //Приклад реалізації, можна робити будь-яким іншим способом
-    Cart.push({
-        pizza: pizza,
-        size: size,
-        quantity: 1
-    });
-
-    //Оновити вміст кошика на сторінці
-    updateCart();
-}
-
-function removeFromCart(cart_item) {
-    //Видалити піцу з кошика
-    //TODO: треба зробити
-
-    //Після видалення оновити відображення
-    updateCart();
-}
-
-function initialiseCart() {
-    //Фукнція віпрацьвуватиме при завантаженні сторінки
-    //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-    //TODO: ...
-
-    updateCart();
-}
-
-function getPizzaInCart() {
-    //Повертає піци які зберігаються в кошику
-    return Cart;
-}
-
-function updateCart() {
-    //Функція викликається при зміні вмісту кошика
-    //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
-
-    //Очищаємо старі піци в кошику
-    $cart.html("");
-
-    //Онволення однієї піци
-    function showOnePizzaInCart(cart_item) {
-        var html_code = Templates.PizzaCart_OneItem(cart_item);
-
-        var $node = $(html_code);
-
-        $node.find(".plus").click(function(){
-            //Збільшуємо кількість замовлених піц
-            cart_item.quantity += 1;
-
-            //Оновлюємо відображення
-            updateCart();
-        });
-
-        $cart.append($node);
-    }
-
-    Cart.forEach(showOnePizzaInCart);
-
-}
-
-exports.removeFromCart = removeFromCart;
-exports.addToCart = addToCart;
-
-exports.getPizzaInCart = getPizzaInCart;
-exports.initialiseCart = initialiseCart;
-
-exports.PizzaSize = PizzaSize;
-},{"../Templates":1}],5:[function(require,module,exports){
-/**
- * Created by chaika on 02.02.16.
- */
-var Templates = require('../Templates');
-var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../Test_List');
-
-//HTML едемент куди будуть додаватися піци
-var $pizza_list = $("#pizza_list");
+var $test_list = $("#test_list");
 
 function showPizzaList(list) {
     //Очищаємо старі піци в кошику
-    $pizza_list.html("");
+    $test_list.html("");
 
     //Онволення однієї піци
-    function showOnePizza(pizza) {
-        var html_code = Templates.PizzaMenu_OneItem({pizza: pizza});
-
-        var $node = $(html_code);
-
-        $node.find(".buy-big").click(function(){
-            PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
-        });
-        $node.find(".buy-small").click(function(){
-            PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
-        });
-
-        $pizza_list.append($node);
+    function showOneTest(test) {
+        var html_code = Templates.TestMenu_OneItem({test: test});
     }
 
     list.forEach(showOnePizza);
 }
 
+/**
 function filterPizza(filter) {
     //Масив куди потраплять піци які треба показати
     var pizza_shown = [];
@@ -340,17 +239,18 @@ function filterPizza(filter) {
     //Показати відфільтровані піци
     showPizzaList(pizza_shown);
 }
+ */
 
 function initialiseMenu() {
     //Показуємо усі піци
-    showPizzaList(Pizza_List)
+    showPizzaList(Test_List);
 }
 
-exports.filterPizza = filterPizza;
+// exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-},{"../Templates":1,"../Test_List":2,"./PizzaCart":4}],6:[function(require,module,exports){
+},{"../Templates":1,"../Test_List":2}],5:[function(require,module,exports){
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1332,7 +1232,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":9,"./utils":8,"fs":6,"path":10}],8:[function(require,module,exports){
+},{"../package.json":8,"./utils":7,"fs":5,"path":9}],7:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1501,7 +1401,7 @@ exports.cache = {
   }
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports={
   "_from": "ejs@^2.4.1",
   "_id": "ejs@2.7.4",
@@ -1571,7 +1471,7 @@ module.exports={
   "version": "2.7.4"
 }
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (process){
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -1877,7 +1777,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":11}],11:[function(require,module,exports){
+},{"_process":10}],10:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
