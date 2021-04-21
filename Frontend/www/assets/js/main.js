@@ -1,5 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
+ * Created by chaika on 02.02.16.
+ */
+
+var ejs = require('ejs');
+
+
+exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n<div class=\"col-md-6 col-lg-4 pizza-card\">\n    <div class=\"thumbnail\">\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n        <% if(pizza.is_new) { %>\n        <span class=\"label label-danger\">Нова</span>\n        <% } else if(pizza.is_popular) {%>\n        <span class=\"label label-success\">Популярна</span>\n        <% } %>\n\n        <div class=\"caption\">\n            <span class=\"title\"><%= pizza.title %></span>\n            <div class=\"type\"><%= pizza.type %></div>\n            <div class=\"description\">\n                <%= getIngredientsArray(pizza).join(\", \") %>\n            </div>\n        </div>\n\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\n        <button class=\"btn btn-primary buy-big\">Купити велику</button>\n    </div>\n</div>");
+
+exports.PizzaCart_OneItem = ejs.compile("<div>\n    <%= pizza.title %> (<%= size %>)\n    <div>Ціна: <%= pizza[size].price %> грн.</div>\n    <div>\n        <button class=\"btn btn-danger minus\">-</button>\n        <span class=\"label label-default\"><%= quantity %></span>\n        <button class=\"btn btn-success plus\">+</button>\n    </div>\n</div>");
+
+},{"ejs":7}],2:[function(require,module,exports){
+/**
  * Created by diana on 12.01.16.
  */
 
@@ -176,19 +188,7 @@ var pizza_info = [
 ];
 
 module.exports = pizza_info;
-},{}],2:[function(require,module,exports){
-/**
- * Created by chaika on 02.02.16.
- */
-
-var ejs = require('ejs');
-
-
-exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n<div class=\"col-md-6 col-lg-4 pizza-card\">\n    <div class=\"thumbnail\">\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n        <% if(pizza.is_new) { %>\n        <span class=\"label label-danger\">Нова</span>\n        <% } else if(pizza.is_popular) {%>\n        <span class=\"label label-success\">Популярна</span>\n        <% } %>\n\n        <div class=\"caption\">\n            <span class=\"title\"><%= pizza.title %></span>\n            <div class=\"type\"><%= pizza.type %></div>\n            <div class=\"description\">\n                <%= getIngredientsArray(pizza).join(\", \") %>\n            </div>\n        </div>\n\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\n        <button class=\"btn btn-primary buy-big\">Купити велику</button>\n    </div>\n</div>");
-
-exports.PizzaCart_OneItem = ejs.compile("<div>\n    <%= pizza.title %> (<%= size %>)\n    <div>Ціна: <%= pizza[size].price %> грн.</div>\n    <div>\n        <button class=\"btn btn-danger minus\">-</button>\n        <span class=\"label label-default\"><%= quantity %></span>\n        <button class=\"btn btn-success plus\">+</button>\n    </div>\n</div>");
-
-},{"ejs":7}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
  */
@@ -197,14 +197,14 @@ $(function(){
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
-    var Pizza_List = require('./Pizza_List');
+    var Pizza_List = require('./Test_List');
 
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
 
 
 });
-},{"./Pizza_List":1,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
+},{"./Test_List":2,"./pizza/PizzaCart":4,"./pizza/PizzaMenu":5}],4:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -292,13 +292,13 @@ exports.getPizzaInCart = getPizzaInCart;
 exports.initialiseCart = initialiseCart;
 
 exports.PizzaSize = PizzaSize;
-},{"../Templates":2}],5:[function(require,module,exports){
+},{"../Templates":1}],5:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../Pizza_List');
+var Pizza_List = require('../Test_List');
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
@@ -348,7 +348,7 @@ function initialiseMenu() {
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-},{"../Pizza_List":1,"../Templates":2,"./PizzaCart":4}],6:[function(require,module,exports){
+},{"../Templates":1,"../Test_List":2,"./PizzaCart":4}],6:[function(require,module,exports){
 
 },{}],7:[function(require,module,exports){
 /*

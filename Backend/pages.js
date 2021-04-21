@@ -3,10 +3,6 @@
  */
 exports.mainPage = function(req, res) {
     res.render('mainPage', {
-        pageTitle: 'Вибір Піци'
+        pageTitle: 'Testpedia'
     });
-};
-
-exports.orderPage = function(req, res) {
-    //TODO: implement
 };
