@@ -15,3 +15,5 @@ function sha1(string) {
 function base64(str)     {
     return new Buffer(str).toString('base64');
 }
+
+//
