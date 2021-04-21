@@ -4,7 +4,7 @@ var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
-function configureEndpoints(app) {
+/*function configureEndpoints(app) {
     var pages = require('./pages');
     var api = require('./api');
 
@@ -18,7 +18,7 @@ function configureEndpoints(app) {
 
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/www')));
-}
+}*/
 
 function startServer(port) {
     //Створюється застосунок
