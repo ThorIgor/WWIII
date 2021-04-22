@@ -16,14 +16,14 @@ module.exports = function(grunt) {
                 transform:  [ require('brfs') ],
                 browserifyOptions: {
                     //Папка з корнем джерельних кодів javascript
-                    basedir: "src/js/"
+                    basedir: "Frontend/src/js/"
                 }
             },
 
             //Збірка з назвою піца
             pizza: {
-                src:        'src/main.js',
-                dest:       'www/assets/js/main.js'
+                src:        'Backend/src/main.js',
+                dest:       'Frontend/www/assets/js/main.js'
             }
         }
     };
