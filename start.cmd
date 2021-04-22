@@ -1,2 +1,2 @@
 call npm install
-node index.js
+call node index.js
