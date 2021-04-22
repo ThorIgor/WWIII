@@ -21,8 +21,8 @@ module.exports = function(grunt) {
             },
 
             //Збірка з назвою піца
-            pizza: {
-                src:        'Backend/src/main.js',
+            test: {
+                src:        'Frontend/src/main.js',
                 dest:       'Frontend/www/assets/js/main.js'
             }
         }
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         //Назва завдання будь-яка
         scripts: {
             //На зміни в яких файлах реагувати
-            files: ['/src/**/*.js', '/**/*.ejs'],
+            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs'],
             //Які завдання виконувати під час зміни в файлах
             tasks: ['browserify:webtest']
         }
