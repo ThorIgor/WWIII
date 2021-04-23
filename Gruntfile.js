@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
 
 
-    grunt.initConfig({
+    var config = {
          pkg: grunt.file.readJSON('package.json'),
 
         //Конфігурація для модуля browserify (перетворює require(..) в код
@@ -24,8 +24,24 @@ module.exports = function(grunt) {
                 dest:       'Frontend/www/assets/js/main.js'
             }
         }
-    });
+    };
+    
+    var watchDebug = {
+        options: {
+            'no-beep': true
+        },
+        //Назва завдання будь-яка
+        scripts: {
+            //На зміни в яких файлах реагувати
+            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs'],
+            //Які завдання виконувати під час зміни в файлах
+            tasks: ['browserify:webtest']
+        }
+    };
 
+    config.watch = watchDebug;
+    grunt.initConfig(config);
+    
     //Сказати які модулі необхідно виокристовувати
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-watch');
