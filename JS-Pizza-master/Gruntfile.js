@@ -4,8 +4,8 @@
 module.exports = function(grunt) {
     //Налаштування збірки Grunt
     var config = {
-        //Інформацію про проект з файлу package.json
-        pkg: grunt.file.readJSON('package.json'),
+        //Інформацію про проект з файлу GeniusTest.json
+        pkg: grunt.file.readJSON('GeniusTest.json'),
 
         //Конфігурація для модуля browserify (перетворює require(..) в код
         browserify:     {

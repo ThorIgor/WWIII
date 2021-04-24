@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 
 app.get("/testPage",function (req, res) {
     res.sendFile(__dirname+'/Frontend/www/testPage.html');
-    res.sendFile(__dirname + '/Backend/data/TestData.json');
+    res.sendFile(__dirname + '/Backend/data/MathTest.json');
     
 });
 
