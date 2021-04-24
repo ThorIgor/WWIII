@@ -1,6 +1,6 @@
 
-var test_list = [
-    {
+
+{
         "locale": "ua",
         "title": "Математика",
         "description": "Тест для перевірки математичних здібностей",
@@ -177,6 +177,3 @@ var test_list = [
         ],
         "showCompletedPage": false
     }
-];
-
-module.exports = test_list;
