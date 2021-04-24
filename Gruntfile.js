@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
 
     var config = {
-         pkg: grunt.file.readJSON('GeniusTest.json'),
+         pkg: grunt.file.readJSON('package.json'),
 
         //Конфігурація для модуля browserify (перетворює require(..) в код
         browserify:     {
