@@ -1,13 +1,19 @@
 
-var Test_List = require('../TestData');
+var API = require(('../API'))
 var Templates = require('../Templates');
+var Test_List = Templates.testList;
 
 
 var popular_tests_block = $(".block1");
 var all_tests_block = $(".block3");
 
 function filterPopular(list) {
-    return list;
+    var popular_list = [];
+    list.forEach(function(val) {
+       if(val.popular === true)
+           popular_list.push(val);
+    });
+    return popular_list;
 }
 
 function showTests(all_list) {
@@ -17,10 +23,12 @@ function showTests(all_list) {
     all_tests_block.html("");
 
     function showPopularTest(test) {
-        var html_code = Templates.PopularTest({test: test});
+        var html_code = Templates.PopularTest({test: test.});
         var node = $(html_code);
 
-        node.href = '/test' + test.id;
+        node.click(function() {
+            API.getTest("/test/" + test.filename);
+        });
 
         popular_tests_block.append(node);
     }
@@ -29,7 +37,9 @@ function showTests(all_list) {
         var html_code = Templates.DefaultTest({test: test});
         var node = $(html_code);
 
-        node.href = '/test' + test.id;
+        node.click(function() {
+            API.getTest("/test/" + test.filename);
+        });
 
         all_tests_block.append(node);
     }
