@@ -33,7 +33,7 @@ function getTestCallback(req, res) {
             "Result JSON:\n" + JSON.stringify(result.data, null, 3);
     });
 
-    $("#surveyElement").Survey({model: survey});
+    $("#surveyElement").Survey.Model(survey);
 }
 
 function showTests(all_list) {
