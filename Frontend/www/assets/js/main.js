@@ -80,6 +80,7 @@ function getTestCallback(req, res) {
         "            <div class=\"test-field\">\n" +
         "                <div id=\"surveyElement\" style=\"display:inline-block;width:100%;\"></div>\n" +
         "                <div id=\"surveyResult\"></div>\n" +
+        "                <script type=\"text/javascript\" src=\"./main.js\"></script>\n" +
         "            </div>\n" +
         "        </div>");
 
@@ -90,7 +91,7 @@ function getTestCallback(req, res) {
             "Result JSON:\n" + JSON.stringify(result.data, null, 3);
     });
 
-    $("#surveyElement").Survey.Model(survey);
+    $("#surveyElement").Survey({model: survey});
 }
 
 function showTests(all_list) {
