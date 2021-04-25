@@ -49,7 +49,7 @@ var ejs = require('ejs');
 
 
 exports.PopularTest = ejs.compile("\n\n<article class=\"test-big\" >\n    <img src= <%=test.logo%> class=\"test-image-big\">\n    <span class=\"test-name-big\"><%=test.name%></span>\n</article>");
-exports.DefaultTest = ejs.compile("\n\n<article href = \"/testPage\" class=\"test-small\" >\n    <img src= <%= test.logo%> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%= test.name %></p>\n        <p class=\"test-name-small\"><%= test.description %></p>\n    </div>\n</article>");
+exports.DefaultTest = ejs.compile("\n\n<article href = \"/testPage\" class=\"test-small\" >\n    <img src= <%= test.logo%> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%= test.name %></p>\n        <p class=\"test-name-description\"><%= test.description %></p>\n    </div>\n</article>");
 },{"ejs":6}],3:[function(require,module,exports){
 
 $(function(){
