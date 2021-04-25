@@ -174,5 +174,6 @@
     }
   ],
   "showCompletedPage": false,
-  "showProgressBar": "top"
+  "showProgressBar": "top",
+  "popular": true
 }

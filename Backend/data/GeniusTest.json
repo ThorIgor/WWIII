@@ -31,5 +31,6 @@
       ]
     }
   ],
-  "showCompletedPage": false
+  "showCompletedPage": false,
+  "popular": false
 }

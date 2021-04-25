@@ -152,5 +152,6 @@
     "showProgressBar": "top",
     "maxTimeToFinish": 60,
     "showTimerPanel": "top",
-    "showTimerPanelMode": "survey"
+    "showTimerPanelMode": "survey",
+    "popular": true
 }
