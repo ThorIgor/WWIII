@@ -14,7 +14,8 @@ exports.sendTestList = function(req,res) {
             id : path.basename(testList[i],'.json'),
             name : getTest(path.basename(testList[i],'.json')).title,
             description : getTest(path.basename(testList[i],'.json')).description,
-            logo : getTest(path.basename(testList[i],'.json')).logo
+            logo : getTest(path.basename(testList[i],'.json')).logo,
+            popular: getTest(path.basename(testList[i],'.json')).popular
         }
         arr.push(testObj);
     }
