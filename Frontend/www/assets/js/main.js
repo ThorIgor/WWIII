@@ -80,6 +80,7 @@ function filterPopular(list) {
 function getTestCallback(req, res) {
     var $content = $(".content");
 
+
     Survey.StylesManager.applyTheme("modern");
 
     $content.html("<div class=\"test-block\">\n" +
@@ -132,7 +133,6 @@ function showTests(all_list) {
 }
 
 function showSearchTests(list) {
-    $(".block1")[0].display = "none";
 
     all_tests_block.html("");
 
