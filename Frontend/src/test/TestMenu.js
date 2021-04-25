@@ -17,17 +17,16 @@ function filterPopular(list) {
 }
 
 function getTestCallback(req, res) {
-    var $content = $(".content");
-
+    var $content = $("#test-block");
+    $(".block1")[0].style.display ="none";
+    $(".block3")[0].style.display ="none";
 
     Survey.StylesManager.applyTheme("modern");
 
-    $content.html("<div class=\"test-block\">\n" +
-        "            <div class=\"test-field\">\n" +
-        "                <div id=\"surveyElement\" style=\"display:inline-block;width:100%;\"></div>\n" +
-        "                <div id=\"surveyResult\"></div>\n" +
-        "            </div>\n" +
-        "        </div>");
+    $content.html("<div class=\"test-field\">\n" +
+        "   <div id=\"surveyElement\" style=\"display:inline-block;width:100%;\"></div>\n" +
+        "   <div id=\"surveyResult\"></div>\n" +
+        "</div>\n");
 
     window.survey = new Survey.Model(res);
 
@@ -40,6 +39,10 @@ function getTestCallback(req, res) {
 }
 
 function showTests(all_list) {
+    $("#test-block").html("");
+    $(".block1")[0].style.display ="block";
+    $(".block3")[0].style.display ="block";
+
     var popular_list = filterPopular(all_list);
 
     popular_tests_block.html("");
@@ -72,6 +75,9 @@ function showTests(all_list) {
 }
 
 function showSearchTests(list) {
+    $("#test-block").html("");
+    $(".block1")[0].style.display ="none";
+    $(".block3")[0].style.display ="block";
 
     all_tests_block.html("");
 
@@ -103,13 +109,16 @@ function initialiseMainPage() {
 $("#search-button").click(function() {
     API.getSearchTestList($("#search-input").val(), function(req, res) {
         if(req === null) {
-            console.log(res);
             Test_List = res;
             showSearchTests(Test_List);
         }
         else
             console.log(req);
     });
+});
+
+$("#mainPage").click(function() {
+    initialiseMainPage();
 });
 
 exports.initialiseMainPage = initialiseMainPage;
