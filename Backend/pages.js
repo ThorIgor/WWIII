@@ -1,14 +1,8 @@
-/**
- * Created by chaika on 09.02.16.
- */
-exports.mainPage = function(req, res) {
-    res.render('mainPage', {
-        pageTitle: 'Вибір Піци'
-    });
+var path = require('path');
+exports.getMainPage = function(req, res) {
+    res.sendFile( path.join(__dirname,'..','/Frontend/www/index.html'));
 };
 
-exports.orderPage = function(req, res) {
-    res.render('orderPage', {
-        pageTitle: 'Замовлення Піци'
-    });
+exports.getTestPage = function(req,res) {
+    res.sendFile( path.join(__dirname,'..','/Frontend/www/testPage.html'));
 };

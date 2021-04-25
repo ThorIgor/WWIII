@@ -1,3 +1,8 @@
+var main = require('./Backend/main');
+main.startServer(8080);
+
+
+
 var express = require('express');
 var app = express();
 var path = require('path');

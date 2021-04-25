@@ -5,20 +5,17 @@ var express = require('express');
 var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-app.use(express.static('Frontend/www'));
-
 
 function configureEndpoints(app) {
+    
     var pages = require('./pages');
     var api = require('./api');
-
+    
+    app.set("view engine", "ejs");
     //Налаштування URL за якими буде відповідати сервер
     //Отримання списку піц
-    app.get('/', api.getMainPage);
-    app.get('/testPage',)
-
-    //Сторінка замовлення
-    app.get('/order.html', pages.orderPage);
+    app.get('/', pages.getMainPage);
+    app.get('/testPage',pages.getTestPage);
 
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/www')));
@@ -29,7 +26,7 @@ function startServer(port) {
 
     //Налаштування директорії з шаблонами
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'ejs');
+    //app.set('view engine', 'ejs');
 
     //Налаштування виводу в консоль списку запитів до сервера
     app.use(morgan('dev'));

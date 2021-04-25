@@ -1,3 +1,3 @@
 call npm install
 call npm si
-call node index.js
+call node server.js
