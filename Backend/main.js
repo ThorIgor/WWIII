@@ -16,6 +16,7 @@ function configureEndpoints(app) {
     //Отримання списку піц
     app.get('/', pages.getMainPage);
     app.get('/testPage',pages.getTestPage);
+    app.get('/testPage/getTest/',api.sendTest);
 
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/www')));
