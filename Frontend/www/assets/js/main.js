@@ -1,6 +1,3 @@
-/**
- * Created by chaika on 09.02.16.
- */
 var API_URL = "http://localhost:8080";
 
 function backendGet(url, callback) {
@@ -31,39 +28,14 @@ function backendPost(url, data, callback) {
     })
 }
 
-exports.getTestList = function(callback) {
-    backendGet("/api/get-test-list", callback);
-}
-
-exports.getTest = function(url, callback) {
-    backendGet(url, callback);
-}
-
-
-$(function(){
-    //This code will execute when the page is ready
-    var TestMenu = require('./test/TestMenu');
-    var Test_List = require('./Templates').testList;
-
-    console.log(Test_List);
-    TestMenu.initialiseMenu();
-});
-/**
- * Created by chaika on 02.02.16.
- */
 var fs = require('fs');
 var ejs = require('ejs');
 
 
-exports.PopularTest = ejs.compile(fs.readFileSync('./Frontend/templates/PopularTest.ejs', "utf8"));
-exports.DefaultTest = ejs.compile(fs.readFileSync('./Frontend/templates/DefaultTest.ejs', "utf8"));
+var PopularTest = ejs.compile(fs.readFileSync('./Frontend/templates/PopularTest.ejs', "utf8"));
+var DefaultTest = ejs.compile(fs.readFileSync('./Frontend/templates/DefaultTest.ejs', "utf8"));
 
-exports.testList = fs.readdirSyc("../../Backend/data/");
-
-var API = require(('../API'))
-var Templates = require('../Templates');
-var Test_List = Templates.testList;
-
+var testList = fs.readdirSyc("../../Backend/data/");
 
 var popular_tests_block = $(".block1");
 var all_tests_block = $(".block3");
@@ -113,7 +85,4 @@ function initialiseMainPage() {
     showTests(Test_List);
 }
 
-
-
-module.exports = initialiseMainPage();
 
