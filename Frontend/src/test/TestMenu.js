@@ -1,7 +1,8 @@
 
 var API = require(('../API'))
 var Templates = require('../Templates');
-var Test_List = require('../../../Backend/data/BrawlStarsTest.json');
+var Test_List = [require('../../../Backend/data/BrawlStarsTest.json')];
+console.log(Test_List);
 
 
 var popular_tests_block = $(".popular-tests");
@@ -23,7 +24,7 @@ function showTests(all_list) {
     all_tests_block.html("");
 
     function showPopularTest(test) {
-        var html_code = Templates.PopularTest({test: test.json});
+        var html_code = Templates.PopularTest({test: test});
         var node = $(html_code);
 
         node.click(function() {
@@ -34,7 +35,7 @@ function showTests(all_list) {
     }
 
     function showAllTest(test) {
-        var html_code = Templates.DefaultTest({test: test.json});
+        var html_code = Templates.DefaultTest({test: test});
         var node = $(html_code);
 
         node.click(function() {
@@ -43,6 +44,8 @@ function showTests(all_list) {
 
         all_tests_block.append(node);
     }
+    API.getTestList(sendTestList());
+
 
     popular_list.forEach(showPopularTest);
     all_list.forEach(showAllTest);

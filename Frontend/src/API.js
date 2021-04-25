@@ -30,7 +30,7 @@ function backendPost(url, data, callback) {
 }
 
 exports.getTestList = function(callback) {
-    backendGet("/api/get-test-list", callback);
+    backendGet("/testPage/getAllTests/", callback);
 }
 
 exports.getTest = function(url, callback) {
