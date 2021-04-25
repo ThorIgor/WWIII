@@ -1,4 +1,6 @@
-
+/**
+ * Created by chaika on 09.02.16.
+ */
 var API_URL = "http://localhost:8080";
 
 function backendGet(url, callback) {
@@ -40,14 +42,15 @@ exports.getTest = function(url, callback) {
 
 $(function(){
     //This code will execute when the page is ready
-    var PizzaMenu = require('./test/TestMenu');
+    var TestMenu = require('./test/TestMenu');
     var Test_List = require('./Templates').testList;
 
     console.log(Test_List);
     TestMenu.initialiseMenu();
 });
-
-
+/**
+ * Created by chaika on 02.02.16.
+ */
 var fs = require('fs');
 var ejs = require('ejs');
 
