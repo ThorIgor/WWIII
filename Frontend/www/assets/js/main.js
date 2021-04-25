@@ -164,6 +164,7 @@ function initialiseMainPage() {
 $("#search-button").click(function() {
     API.getSearchTestList($("#search-input").val(), function(req, res) {
         if(req === null) {
+            console.log(res);
             Test_List = res;
             showSearchTests(Test_List);
         }

@@ -50,5 +50,5 @@ function search(param) {
         if(val.name.contains(param) || val.description.contains(param) || val.id.contains(param))
             result.push(val);
     });
-    return result;
+    return arr;
 }
