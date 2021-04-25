@@ -31,8 +31,7 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        document.querySelector('#surveyResult').textContent =
-            "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+        $("surveyResult").html();
     });
 
     $content.find("#surveyElement").Survey({model: survey});
