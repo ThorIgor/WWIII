@@ -1,11 +1,11 @@
 
 var API = require(('../API'))
 var Templates = require('../Templates');
-var Test_List = Templates.testList;
+var Test_List = [];
 
 
-var popular_tests_block = $(".block1");
-var all_tests_block = $(".block3");
+var popular_tests_block = $(".popular-tests");
+var all_tests_block = $(".all-tests");
 
 function filterPopular(list) {
     var popular_list = [];
@@ -54,5 +54,5 @@ function initialiseMainPage() {
 
 
 
-module.exports = initialiseMainPage();
+exports.initialiseMainPage = initialiseMainPage;
 

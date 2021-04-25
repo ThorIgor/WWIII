@@ -40,33 +40,29 @@ exports.getTest = function(url, callback) {
 
 },{}],2:[function(require,module,exports){
 
-var fs = require('fs');
+
 var ejs = require('ejs');
 
 
 exports.PopularTest = ejs.compile("\n\n<article class=\"test-big\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%test.logo.ua%> class=\"test-image-big\">\n    <span class=\"test-name-big\"><%test.title%>></span>\n</article>");
 exports.DefaultTest = ejs.compile("\n\n<article class=\"test-small\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%test.logo.ua%>> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%test.title%></p>\n        <p class=\"test-name-small\"><%test.description%>></p>\n    </div>\n</article>");
-
-exports.testList = fs.readdirSyc("../../Backend/data/");
-},{"ejs":6,"fs":5}],3:[function(require,module,exports){
+},{"ejs":6}],3:[function(require,module,exports){
 
 $(function(){
     //This code will execute when the page is ready
     var TestMenu = require('./test/TestMenu');
-    var Test_List = require('./Templates').testList;
 
-    console.log(Test_List);
-    TestMenu.initialiseMenu();
+    TestMenu.initialiseMainPage();
 });
-},{"./Templates":2,"./test/TestMenu":4}],4:[function(require,module,exports){
+},{"./test/TestMenu":4}],4:[function(require,module,exports){
 
 var API = require(('../API'))
 var Templates = require('../Templates');
-var Test_List = Templates.testList;
+var Test_List = [];
 
 
-var popular_tests_block = $(".block1");
-var all_tests_block = $(".block3");
+var popular_tests_block = $(".popular-tests");
+var all_tests_block = $(".all-tests");
 
 function filterPopular(list) {
     var popular_list = [];
@@ -115,7 +111,7 @@ function initialiseMainPage() {
 
 
 
-module.exports = initialiseMainPage();
+exports.initialiseMainPage = initialiseMainPage;
 
 
 },{"../API":1,"../Templates":2}],5:[function(require,module,exports){
