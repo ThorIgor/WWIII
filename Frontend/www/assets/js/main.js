@@ -44,8 +44,8 @@ exports.getTest = function(url, callback) {
 var ejs = require('ejs');
 
 
-exports.PopularTest = ejs.compile("\n\n<article class=\"test-big\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%test.logo%> class=\"test-image-big\">\n    <span class=\"test-name-big\"><%test.title%>></span>\n</article>");
-exports.DefaultTest = ejs.compile("\n\n<article class=\"test-small\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%test.logo%> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%test.title%></p>\n        <p class=\"test-name-small\"><%test.description%>></p>\n    </div>\n</article>");
+exports.PopularTest = ejs.compile("\n\n<article class=\"test-big\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%=test.logo%> class=\"test-image-big\">\n    <span class=\"test-name-big\"><%=test.name%>></span>\n</article>");
+exports.DefaultTest = ejs.compile("\n\n<article class=\"test-small\" onclick=\"window.location.href='/testPage.html'\">\n    <img src= <%= test.logo%> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%= test.name %></p>\n        <p class=\"test-name-small\"><%= test.description %></p>\n    </div>\n</article>");
 },{"ejs":6}],3:[function(require,module,exports){
 
 $(function(){
@@ -65,13 +65,18 @@ var all_tests_block = $(".all-tests");
 
 function filterPopular(list) {
     var popular_list = [];
-    for(const test of list)
-       if(test.popular === true)
-           popular_list.push(test);
+    list.forEach(function (test) {
+        if(test.popular === true)
+            popular_list.push(test);
+    });
+    //for(const test of list)
+    //   if(test.popular === true)
+    //       popular_list.push(test);
     return popular_list;
 }
 
 function showTests(all_list) {
+    console.log(all_list);
     var popular_list = filterPopular(all_list);
 
     popular_tests_block.html("");
@@ -89,6 +94,7 @@ function showTests(all_list) {
     }
 
     function showAllTest(test) {
+        console.log(test);
         var html_code = Templates.DefaultTest({test: test});
         var node = $(html_code);
 
@@ -100,18 +106,19 @@ function showTests(all_list) {
     }
 
     popular_list.forEach(showPopularTest);
-    for(const test of all_list)
-        showAllTest(test);
+    all_list.forEach(showAllTest);
+    //for(const test of all_list)
+    //    showAllTest(test);
 }
 
 function initialiseMainPage() {
     API.getTestList(function(req, res) {
-        if(req == null)
-            Test_List = res;
+        if(req === null) {
+            Test_List = JSON.parse(res);
+            showTests(Test_List);
+        }
         else
             console.log(req);
-        console.log(Test_List);
-        showTests(Test_List);
     });
 }
 
