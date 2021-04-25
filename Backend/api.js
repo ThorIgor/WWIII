@@ -7,7 +7,7 @@ exports.getTest= function(req, res) {
 }
 
 exports.getTestList = function(req,res) {
-    res.json(getAllTestsShort());
+    res.json(JSON.parse(getAllTestsShort()));
 }
 
 exports.getSearchResults = function(req,res){
@@ -39,14 +39,16 @@ function getAllTestsShort()
         }
         arr.push(testObj);
     }
-    return JSON.stringify(arr);
+    return arr;
 }
     
 function search(param) {
     var result = [];
      arr = getAllTestsShort();
+    console.log(JSON.parse(arr[i]['name']));
     for(var i; arr.length;++i)
-        if(arr.title.contains(param) || arr.description.contains(param) || arr.id.contains(param))
+        if(arr[i].name.contains(param) || arr[i].description.contains(param) || arr[i].id.contains(param))
             result.push(arr[i]);
+    console.log(result);
     return result;
 }
