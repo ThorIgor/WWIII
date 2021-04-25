@@ -2,7 +2,7 @@ const fs = require('fs');
 var path = require('path');
 var testFolder = path.join( __dirname, '/data');
 exports.sendTest= function(req, res) {
-    res.json(getTest(req.params['testName']));
+    res.json(getTest(req.query['testName']));
 };
 
 exports.sendTestList = function(req,res) {
