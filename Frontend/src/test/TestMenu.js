@@ -1,19 +1,16 @@
 
 var API = require(('../API'))
 var Templates = require('../Templates');
-var Test_List = [require('../../../Backend/data/BrawlStarsTest.json')];
-console.log(Test_List);
-
+var Test_List = [];
 
 var popular_tests_block = $(".popular-tests");
 var all_tests_block = $(".all-tests");
 
 function filterPopular(list) {
     var popular_list = [];
-    list.forEach(function(val) {
-       if(val.popular === true)
-           popular_list.push(val);
-    });
+    for(const test of list)
+       if(test.popular === true)
+           popular_list.push(test);
     return popular_list;
 }
 
@@ -28,7 +25,7 @@ function showTests(all_list) {
         var node = $(html_code);
 
         node.click(function() {
-            API.getTest("/testPage/getTest/" + test.filename);
+            API.getTest("/testPage/getTest/" + test.id);
         });
 
         popular_tests_block.append(node);
@@ -39,23 +36,27 @@ function showTests(all_list) {
         var node = $(html_code);
 
         node.click(function() {
-            API.getTest("/testPage/getTest/" + test.filename);
+            API.getTest("/testPage/getTest/" + test.id);
         });
 
         all_tests_block.append(node);
     }
-    API.getTestList(sendTestList());
-
 
     popular_list.forEach(showPopularTest);
-    all_list.forEach(showAllTest);
+    for(const test of all_list)
+        showAllTest(test);
 }
 
 function initialiseMainPage() {
-    showTests(Test_List);
+    API.getTestList(function(req, res) {
+        if(req == null)
+            Test_List = res;
+        else
+            console.log(req);
+        console.log(Test_List);
+        showTests(Test_List);
+    });
 }
-
-$("")
 
 exports.initialiseMainPage = initialiseMainPage;
 
