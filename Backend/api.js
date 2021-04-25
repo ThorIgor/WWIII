@@ -9,12 +9,12 @@ exports.sendTestList = function(req,res) {
     let arr[];
     let testObj;
     let testList = getTestList();
-    for(int i = 0; i < testList.length;++i){
+    for(let i = 0; i < testList.length;++i){
         testObj= {
-            id = testList[i],
-            name = getTest(testList[i]).title,
-            description = getTest(testList[i]).description,
-            logo = getTest(testList[i]).logo
+            id : testList[i],
+            name : getTest(testList[i]).title,
+            description : getTest(testList[i]).description,
+            logo : getTest(testList[i]).logo
         }
         arr.push(testObj);
     }
