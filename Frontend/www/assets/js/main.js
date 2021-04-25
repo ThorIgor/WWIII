@@ -81,7 +81,7 @@ function showTests(all_list) {
     all_tests_block.html("");
 
     function showPopularTest(test) {
-        var html_code = Templates.PopularTest({test: test.});
+        var html_code = Templates.PopularTest({test: test});
         var node = $(html_code);
 
         node.click(function() {
