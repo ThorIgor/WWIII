@@ -6,7 +6,7 @@ exports.sendTest= function(req, res) {
 };
 
 exports.sendTestList = function(req,res) {
-    let arr[];
+    let arr=[];
     let testObj;
     let testList = getTestList();
     for(let i = 0; i < testList.length;++i){
