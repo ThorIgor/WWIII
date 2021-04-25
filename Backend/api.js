@@ -6,19 +6,20 @@ exports.sendTest= function(req, res) {
 };
 
 exports.sendTestList = function(req,res) {
-    let arr[];
+    let arr;
     let testObj;
     let testList = getTestList();
-    for(int i = 0; i < testList.length;++i){
+    for(let i = 0; i < testList.length;++i){
         testObj= {
-            id = testList[i],
+            id = getTestList()[i],
             name = getTest(testList[i]).title,
             description = getTest(testList[i]).description,
             logo = getTest(testList[i]).logo
         }
         arr.push(testObj);
     }
-    res.json(arr);
+    
+    res.json(JSON.stringify(arr));
 }
 
 
