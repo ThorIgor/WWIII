@@ -1,9 +1,10 @@
 const fs = require('fs');
 var path = require('path');
 var testFolder = path.join( __dirname, '/data');
+
 exports.getTest= function(req, res) {
     res.json(getTest(req.query['testName']));
-};
+}
 
 exports.getTestList = function(req,res) {
     res.json(getAllTestsShort());
@@ -41,11 +42,10 @@ function getAllTestsShort()
     return JSON.stringify(arr);
 }
     
-    
 function search(param) {
     var result = [];
-     arr = getAllTestsShort)();
-    for(var i in arr.length;++i)
+     arr = getAllTestsShort();
+    for(var i; arr.length;++i)
         if(arr.title.contains(param) || arr.description.contains(param) || arr.id.contains(param))
             result.push(arr[i]);
     return result;
