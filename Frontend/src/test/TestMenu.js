@@ -30,7 +30,7 @@ function showTests(all_list) {
         var node = $(html_code);
 
         node.click(function() {
-            API.getTest("/testPage/getTest/" + test.id);
+            //API.getTest("/testPage/getTest/" + test.id);
         });
 
         popular_tests_block.append(node);
@@ -42,7 +42,27 @@ function showTests(all_list) {
         var node = $(html_code);
 
         node.click(function() {
-            API.getTest("/testPage/getTest/" + test.id);
+            API.getTest("/testPage/getTest/" + test.id, function(req, res) {
+                var $content = $(".content");
+
+                Survey.StylesManager.applyTheme("modern");
+
+                $content.html("<div class=\"test-block\">\n" +
+                    "            <div class=\"test-field\">\n" +
+                    "                <div id=\"surveyElement\" style=\"display:inline-block;width:100%;\"></div>\n" +
+                    "                <div id=\"surveyResult\"></div>\n" +
+                    "            </div>\n" +
+                    "        </div>");
+                console.log(res);
+                window.survey = new Survey.model(res);
+
+                survey.onComplete.add(function (result) {
+                        document.querySelector('#surveyResult').textContent =
+                            "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+                    });
+
+                $content.find("#surveyElement").Survey({model: survey});
+            });
         });
 
         all_tests_block.append(node);
@@ -50,8 +70,6 @@ function showTests(all_list) {
 
     popular_list.forEach(showPopularTest);
     all_list.forEach(showAllTest);
-    //for(const test of all_list)
-    //    showAllTest(test);
 }
 
 function initialiseMainPage() {
