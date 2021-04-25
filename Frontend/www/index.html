@@ -8,8 +8,12 @@
     <meta name="description" content="" />
     <link href="style.css" rel="stylesheet">
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/survey-jquery@1.8.44/survey.jquery.min.js"></script>
+    <link href="https://unpkg.com/survey-knockout@1.8.44/modern.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./index.css"></head>
 
 </head>
 
@@ -18,8 +22,8 @@
         <div class="logo"> <a class="logo-text">Testpedia</a> </div>
         <div class="search-line">
             <div class="search">
-                <input class="input" type="text" name="nameInput" placeholder="Search tests...">
-                <button class="button button-search" onclick="window.location.href='/searchPage.html'">Search</button>
+                <input id = "search-input" class="input" type="text" name="nameInput" placeholder="Search tests...">
+                <button id = "search-button" class="button button-search">Search</button>
             </div>
         </div>
         <div class="login">
@@ -90,9 +94,8 @@
                 </article>
             </div>
         </div>
+        <div id = "surveyElement"></div>
     </main>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
 
     <script type="text/javascript"  src="assets/js/main.js"> </script>
 </body>

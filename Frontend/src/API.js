@@ -33,6 +33,10 @@ exports.getTestList = function(callback) {
     backendGet("/testPage/getAllTests/", callback);
 }
 
-exports.getTest = function(url, callback) {
-    backendGet(url, callback);
+exports.getTest = function(id, callback) {
+    backendGet("/testPage/getTest?testName=" + id, callback);
+}
+
+exports.getSearchTestList = function(searchInput, callback) {
+    backendGet("/search?search_query=" + searchInput, callback);
 }
