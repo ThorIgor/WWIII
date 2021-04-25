@@ -1,11 +1,30 @@
 const fs = require('fs');
 var path = require('path');
 var testFolder = path.join( __dirname, '/data');
-exports.sendTest= function(req, res) {
+exports.getTest= function(req, res) {
     res.json(getTest(req.query['testName']));
 };
 
-exports.sendTestList = function(req,res) {
+exports.getTestList = function(req,res) {
+    res.json(getAllTestsShort());
+}
+
+exports.getSearchResults = function(req,res){
+    res.json(search(req.query['search_query']));
+}
+
+function getTest(name) {
+    try { return JSON.parse(fs.readFileSync(path.join(testFolder ,name+ '.json'))); }
+    catch{}
+    return 0;
+}
+
+function getTestList() { 
+        return fs.readdirSync(testFolder);
+}
+
+function getAllTestsShort()
+{
     let arr=[];
     let testObj;
     let testList = getTestList();
@@ -19,17 +38,15 @@ exports.sendTestList = function(req,res) {
         }
         arr.push(testObj);
     }
+    return JSON.stringify(arr);
+}
     
-    res.json(JSON.stringify(arr));
-}
-
-
-function getTest(name) {
-    try { return JSON.parse(fs.readFileSync(path.join(testFolder ,name+ '.json'))); }
-    catch{}
-    return 0;
-}
-
-function getTestList() { 
-        return fs.readdirSync(testFolder);
+    
+function search(param) {
+    var result = [];
+     arr = getAllTestsShort)();
+    for(var i in arr.length;++i)
+        if(arr.title.contains(param) || arr.description.contains(param) || arr.id.contains(param))
+            result.push(arr[i]);
+    return result;
 }
