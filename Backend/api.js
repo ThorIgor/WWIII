@@ -46,8 +46,9 @@ function getAllTestsShort()
 function search(param) {
     var result = [];
     var arr = JSON.parse(getAllTestsShort());
+    param = param.toLowerCase();
     arr.forEach(function(val) {
-        if(val.name.contains(param) || val.description.contains(param) || val.id.contains(param))
+        if(val.name.toLowerCase().includes(param) || val.description.toLowerCase().includes(param) || val.id.toLowerCase().includes(param))
             result.push(val);
     });
     return result;
