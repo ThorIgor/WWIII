@@ -1,6 +1,6 @@
 const fs = require('fs');
 var path = require('path');
-var testFolder = path.join(__dirname, '/data/');
+var testFolder = path.join( __dirname, '/data');
 exports.sendTest= function(req, res) {
     res.json(getTest(req.params['testName']));
 };
@@ -11,10 +11,10 @@ exports.sendTestList = function(req,res) {
     let testList = getTestList();
     for(let i = 0; i < testList.length;++i){
         testObj= {
-            id : testList[i],
-            name : getTest(testList[i]).title,
-            description : getTest(testList[i]).description,
-            logo : getTest(testList[i]).logo
+            id : path.basename(testList[i],'.json'),
+            name : getTest(path.basename(testList[i],'.json')).title,
+            description : getTest(path.basename(testList[i],'.json')).description,
+            logo : getTest(path.basename(testList[i],'.json')).logo
         }
         arr.push(testObj);
     }
@@ -24,7 +24,7 @@ exports.sendTestList = function(req,res) {
 
 
 function getTest(name) {
-    try { return JSON.parse(fs.readFileSync(path.join(testFolder ,name, '.json'))); }
+    try { return JSON.parse(fs.readFileSync(path.join(testFolder ,name+ '.json'))); }
     catch{}
     return 0;
 }
