@@ -51,5 +51,5 @@ function search(param) {
         if(val.name.toLowerCase().includes(param) || val.description.toLowerCase().includes(param) || val.id.toLowerCase().includes(param))
             result.push(val);
     });
-    return result;
+    return arr;
 }
