@@ -56,14 +56,14 @@
 .test-big {
     box-sizing: border-box;
     height: 240px;
-    width: 1092/7px;
+    width: 156px;
     margin-right: 10px;
 }
 
 .test-image-big {
     box-sizing: border-box;
     height: 200px;
-    width: 1092/7px;
+    width: 100%;
     text-align: center;
     font: 35px Roboto, sans-serif;
     border-radius: 8px;
@@ -105,6 +105,10 @@
     min-width: 566px;
     margin-top: 15px;
     display: flex;
+    &:hover,
+    &:focus{
+        background-color: lighten(@header-color,35%);
+    }
 }
 
 .test-text {
