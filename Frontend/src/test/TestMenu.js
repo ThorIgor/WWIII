@@ -72,7 +72,6 @@ function showTests(all_list) {
 
 function showSearchTests(list) {
     $(".block1")[0].display = "none";
-    console.log($(".block1"));
 
     all_tests_block.html("");
 
@@ -104,7 +103,7 @@ function initialiseMainPage() {
 $("#search-button").click(function() {
     API.getSearchTestList($("#search-input").val(), function(req, res) {
         if(req === null) {
-            Test_List = JSON.parse(res);
+            Test_List = res;
             showSearchTests(Test_List);
         }
         else

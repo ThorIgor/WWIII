@@ -133,7 +133,6 @@ function showTests(all_list) {
 
 function showSearchTests(list) {
     $(".block1")[0].display = "none";
-    console.log($(".block1"));
 
     all_tests_block.html("");
 
@@ -165,7 +164,7 @@ function initialiseMainPage() {
 $("#search-button").click(function() {
     API.getSearchTestList($("#search-input").val(), function(req, res) {
         if(req === null) {
-            Test_List = JSON.parse(res);
+            Test_List = res;
             showSearchTests(Test_List);
         }
         else
@@ -1301,29 +1300,33 @@ exports.hyphenToCamel = function (str) {
 
 },{}],8:[function(require,module,exports){
 module.exports={
-  "_from": "ejs@^3.1.6",
+  "_args": [
+    [
+      "ejs@3.1.6",
+      "C:\\Users\\Igor\\WebstormProjects\\WebTest"
+    ]
+  ],
+  "_from": "ejs@3.1.6",
   "_id": "ejs@3.1.6",
   "_inBundle": false,
   "_integrity": "sha512-9lt9Zse4hPucPkoP7FHDF0LQAlGyF9JVpnClFLFH3aSSbxmyoqINRpp/9wePWJTUl4KOQwRL72Iw3InHPDkoGw==",
   "_location": "/ejs",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "ejs@^3.1.6",
+    "raw": "ejs@3.1.6",
     "name": "ejs",
     "escapedName": "ejs",
-    "rawSpec": "^3.1.6",
+    "rawSpec": "3.1.6",
     "saveSpec": null,
-    "fetchSpec": "^3.1.6"
+    "fetchSpec": "3.1.6"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/ejs/-/ejs-3.1.6.tgz",
-  "_shasum": "5bfd0a0689743bb5268b3550cceeebbc1702822a",
-  "_spec": "ejs@^3.1.6",
+  "_spec": "3.1.6",
   "_where": "C:\\Users\\Igor\\WebstormProjects\\WebTest",
   "author": {
     "name": "Matthew Eernisse",
@@ -1336,11 +1339,9 @@ module.exports={
   "bugs": {
     "url": "https://github.com/mde/ejs/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "jake": "^10.6.1"
   },
-  "deprecated": false,
   "description": "Embedded JavaScript templates",
   "devDependencies": {
     "browserify": "^16.5.1",
