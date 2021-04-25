@@ -1244,31 +1244,47 @@ exports.hyphenToCamel = function (str) {
 
 },{}],8:[function(require,module,exports){
 module.exports={
-  "name": "ejs",
-  "description": "Embedded JavaScript templates",
-  "keywords": [
-    "template",
-    "engine",
-    "ejs"
+  "_from": "ejs@^3.1.6",
+  "_id": "ejs@3.1.6",
+  "_inBundle": false,
+  "_integrity": "sha512-9lt9Zse4hPucPkoP7FHDF0LQAlGyF9JVpnClFLFH3aSSbxmyoqINRpp/9wePWJTUl4KOQwRL72Iw3InHPDkoGw==",
+  "_location": "/ejs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "ejs@^3.1.6",
+    "name": "ejs",
+    "escapedName": "ejs",
+    "rawSpec": "^3.1.6",
+    "saveSpec": null,
+    "fetchSpec": "^3.1.6"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
-  "version": "3.1.6",
-  "author": "Matthew Eernisse <mde@fleegix.org> (http://fleegix.org)",
-  "license": "Apache-2.0",
+  "_resolved": "https://registry.npmjs.org/ejs/-/ejs-3.1.6.tgz",
+  "_shasum": "5bfd0a0689743bb5268b3550cceeebbc1702822a",
+  "_spec": "ejs@^3.1.6",
+  "_where": "C:\\Users\\Igor\\WebstormProjects\\WebTest",
+  "author": {
+    "name": "Matthew Eernisse",
+    "email": "mde@fleegix.org",
+    "url": "http://fleegix.org"
+  },
   "bin": {
-    "ejs": "./bin/cli.js"
+    "ejs": "bin/cli.js"
   },
-  "main": "./lib/ejs.js",
-  "jsdelivr": "ejs.min.js",
-  "unpkg": "ejs.min.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mde/ejs.git"
+  "bugs": {
+    "url": "https://github.com/mde/ejs/issues"
   },
-  "bugs": "https://github.com/mde/ejs/issues",
-  "homepage": "https://github.com/mde/ejs",
+  "bundleDependencies": false,
   "dependencies": {
     "jake": "^10.6.1"
   },
+  "deprecated": false,
+  "description": "Embedded JavaScript templates",
   "devDependencies": {
     "browserify": "^16.5.1",
     "eslint": "^6.8.0",
@@ -1281,14 +1297,27 @@ module.exports={
   "engines": {
     "node": ">=0.10.0"
   },
+  "homepage": "https://github.com/mde/ejs",
+  "jsdelivr": "ejs.min.js",
+  "keywords": [
+    "template",
+    "engine",
+    "ejs"
+  ],
+  "license": "Apache-2.0",
+  "main": "./lib/ejs.js",
+  "name": "ejs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mde/ejs.git"
+  },
   "scripts": {
     "test": "mocha"
-  }
-
-,"_resolved": "https://registry.npmjs.org/ejs/-/ejs-3.1.6.tgz"
-,"_integrity": "sha512-9lt9Zse4hPucPkoP7FHDF0LQAlGyF9JVpnClFLFH3aSSbxmyoqINRpp/9wePWJTUl4KOQwRL72Iw3InHPDkoGw=="
-,"_from": "ejs@3.1.6"
+  },
+  "unpkg": "ejs.min.js",
+  "version": "3.1.6"
 }
+
 },{}],9:[function(require,module,exports){
 (function (process){(function (){
 // 'path' module extracted from Node.js v8.11.1 (only the posix part)
