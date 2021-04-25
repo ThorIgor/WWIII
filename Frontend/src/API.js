@@ -1,7 +1,5 @@
-/**
- * Created by chaika on 09.02.16.
- */
-var API_URL = "http://localhost:8080";
+
+var API_URL = "http://localhost:5050";
 
 function backendGet(url, callback) {
     $.ajax({
