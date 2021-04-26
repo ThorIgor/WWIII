@@ -34,7 +34,7 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        var result = require(path.join(resultPath + res.id));
+        var result = require("../../../Backend/results/BrawlStarsTest.js");
         $("#surveyResult").html(result.resultHTML(survey.data));
     });
 
