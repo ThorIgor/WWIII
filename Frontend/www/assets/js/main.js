@@ -62,6 +62,7 @@ exports.resultHTML = function(data) {
 var ejs = require('ejs');
 
 exports.BrawlStars = ejs.compile("\r\n<article class=\"test-big\" >\r\n    <img src= <%=logo%> class=\"test-image-big\">\r\n    <div class=\"test-name-big\"><%=text%></div>\r\n</article>");
+exports.Genius = ejs.compile("\r\n<article class=\"test-big\" >\r\n    <img src= <%=logo%> class=\"test-image-big\">\r\n    <div class=\"test-name-big\"><%=text%></div>\r\n</article>");
 },{"ejs":8}],3:[function(require,module,exports){
 
 var API_URL = "http://localhost:8080";
