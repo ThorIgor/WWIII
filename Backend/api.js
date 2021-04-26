@@ -1,8 +1,9 @@
 const fs = require('fs');
 var path = require('path');
 var testFolder = path.join( __dirname, '/data');
+var resultFolder = path.join(__dirname, '/result')
 
-exports.getTest= function(req, res) {
+exports.getTest = function(req, res) {
     res.json(getTest(req.query['testName']));
 }
 
@@ -18,6 +19,10 @@ function getTest(name) {
     try { return JSON.parse(fs.readFileSync(path.join(testFolder ,name+ '.json'))); }
     catch{}
     return 0;
+}
+
+function getResult(name) {
+    return  + name;
 }
 
 function getTestList() {

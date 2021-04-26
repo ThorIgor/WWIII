@@ -49,7 +49,7 @@ var ejs = require('ejs');
 
 
 exports.PopularTest = ejs.compile("\n\n<article class=\"test-big\" >\n    <img src= <%=test.logo%> class=\"test-image-big\">\n    <span class=\"test-name-big\"><%=test.name%></span>\n</article>");
-exports.DefaultTest = ejs.compile("\n\n<article href = \"/testPage\" class=\"test-small\" >\n    <img src= <%= test.logo%> class=\"test-image-small\">\n    <div class=\"test-text\">\n        <p class=\"test-name-small\"><%= test.name %></p>\n        <p class=\"test-name-description\"><%= test.description %></p>\n    </div>\n</article>");
+exports.DefaultTest = ejs.compile("\r\n\r\n<article href = \"/testPage\" class=\"test-small\" >\r\n    <img src= <%= test.logo%> class=\"test-image-small\">\r\n    <div class=\"test-text\">\r\n        <p class=\"test-name-small\"><%= test.name %></p>\r\n        <p class=\"test-name-description\"><%= test.description %></p>\r\n    </div>\r\n</article>\r\n");
 },{"ejs":6}],3:[function(require,module,exports){
 
 $(function(){
@@ -62,6 +62,8 @@ $(function(){
 
 var API = require(('../API'))
 var Templates = require('../Templates');
+var path = require("path");
+var resultPath = "../../../Backend/results/";
 var Test_List = [];
 
 var popular_tests_block = $(".popular-tests");
@@ -82,6 +84,7 @@ function getTestCallback(req, res) {
     $(".block1")[0].style.display ="none";
     $(".block3")[0].style.display ="none";
 
+
     Survey.StylesManager.applyTheme("modern");
 
     $content.html("<div class=\"test-field\">\n" +
@@ -92,7 +95,8 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        $("surveyResult").html();
+        var result = require(path.join(resultPath + res.id));
+        $("#surveyResult").html(result.resultHTML(survey.data));
     });
 
     $content.find("#surveyElement").Survey({model: survey});
@@ -183,7 +187,7 @@ $("#mainPage").click(function() {
 
 exports.initialiseMainPage = initialiseMainPage;
 
-},{"../API":1,"../Templates":2}],5:[function(require,module,exports){
+},{"../API":1,"../Templates":2,"path":9}],5:[function(require,module,exports){
 
 },{}],6:[function(require,module,exports){
 /*

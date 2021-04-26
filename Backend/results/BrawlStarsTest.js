@@ -1,5 +1,5 @@
 
-var Templates = require("Backend/results/Templates")
+var Templates = require("./Templates")
 
 exports.resultHTML = function(data) {
     var sum = parseInt(data.question1) +

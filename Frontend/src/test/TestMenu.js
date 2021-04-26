@@ -1,6 +1,8 @@
 
 var API = require(('../API'))
 var Templates = require('../Templates');
+var path = require("path");
+var resultPath = "../../../Backend/results/";
 var Test_List = [];
 
 var popular_tests_block = $(".popular-tests");
@@ -21,6 +23,7 @@ function getTestCallback(req, res) {
     $(".block1")[0].style.display ="none";
     $(".block3")[0].style.display ="none";
 
+
     Survey.StylesManager.applyTheme("modern");
 
     $content.html("<div class=\"test-field\">\n" +
@@ -31,7 +34,8 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        $("surveyResult").html();
+        var result = require(path.join(resultPath + res.id));
+        $("#surveyResult").html(result.resultHTML(survey.data));
     });
 
     $content.find("#surveyElement").Survey({model: survey});
