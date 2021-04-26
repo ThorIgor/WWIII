@@ -61,7 +61,7 @@ exports.resultHTML = function(data) {
 
 var ejs = require('ejs');
 
-exports.BrawlStars = ejs.compile("\r\n<article class=\"test-big\" >\r\n    <img src= <%=logo%> class=\"test-image-big\">\r\n    <div class=\"test-name-big\"><%=text%></div>\r\n</article>");
+exports.BrawlStars = ejs.compile("\r\n<article class=\"test-big-result\" >\r\n    <img src= <%=logo%> class=\"test-image-big-result\">\r\n    <div class=\"test-name-big-result\"><%=text%></div>\r\n</article>\r\n");
 exports.Genius = ejs.compile("\r\n<article class=\"test-big\" >\r\n    <img src= <%=logo%> class=\"test-image-big\">\r\n    <div class=\"test-name-big\"><%=text%></div>\r\n</article>");
 },{"ejs":8}],3:[function(require,module,exports){
 
@@ -160,7 +160,7 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        var result = require("../../../Backend/results/BrawlStarsTest.js");
+        var result = require("../../../Backend/results/BrawlStarsTest");
         $("#surveyResult").html(result.resultHTML(survey.data));
     });
 
@@ -252,7 +252,7 @@ $("#mainPage").click(function() {
 
 exports.initialiseMainPage = initialiseMainPage;
 
-},{"../../../Backend/results/BrawlStarsTest.js":1,"../API":3,"../Templates":4,"path":11}],7:[function(require,module,exports){
+},{"../../../Backend/results/BrawlStarsTest":1,"../API":3,"../Templates":4,"path":11}],7:[function(require,module,exports){
 
 },{}],8:[function(require,module,exports){
 /*
