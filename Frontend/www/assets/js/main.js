@@ -93,9 +93,9 @@ exports.resultHTML = function(data) {
         sum+=1;
     if(data.question5 == "oleg")
         sum+=1;
-    if(data.question6[0] == "1.2" && data.question6[1] == "1/2")
+    if((data.question6[0] == "1.2" && data.question6[1] == "1/2") || (data.question6[0] == "1/2" && data.question6[1] == "1.2"))
         sum+=1;
-    return Templates.Math({text: "Your grade: " + sum});
+    return Templates.Math({text: "Твоя оцінка: " + sum});
 }
 },{"./Templates":4}],4:[function(require,module,exports){
 
