@@ -15,6 +15,7 @@
     "grunt-browserify": "^6.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "iconv-lite": "^0.6.2",
+    "module": "^1.2.5",
     "morgan": "^1.10.0",
     "qs": "^6.10.1",
     "survey-jquery": "^1.8.44"

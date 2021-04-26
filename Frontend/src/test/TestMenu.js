@@ -1,8 +1,7 @@
 
 var API = require(('../API'))
 var Templates = require('../Templates');
-var path = require("path");
-var resultPath = "../../../Backend/results/";
+var resultMain = require("../../../Backend/results/resultMain");
 var Test_List = [];
 
 var popular_tests_block = $(".popular-tests");
@@ -34,8 +33,7 @@ function getTestCallback(req, res) {
     window.survey = new Survey.Model(res);
 
     survey.onComplete.add(function (result) {
-        var result = require("../../../Backend/results/BrawlStarsTest");
-        $("#surveyResult").html(result.resultHTML(survey.data));
+        $("#surveyResult").html(resultMain.resultHTML(res.id)(survey.data));
     });
 
     $content.find("#surveyElement").Survey({model: survey});
