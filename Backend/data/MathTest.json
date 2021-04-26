@@ -151,5 +151,6 @@
     "maxTimeToFinish": 60,
     "showTimerPanel": "top",
     "showTimerPanelMode": "survey",
-    "popular": true
+    "popular": true,
+    "id": "MathTest"
 }

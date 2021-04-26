@@ -31,5 +31,6 @@
     }
   ],
   "showCompletedPage": false,
-  "popular": false
+  "popular": false,
+  "id": "GeniusTest"
 }
