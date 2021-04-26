@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         //Назва завдання будь-яка
         scripts: {
             //На зміни в яких файлах реагувати
-            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs, Backend/result/*.js', "Backend/result/*.ejs"],
+            files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs', 'Backend/result/*.js', "Backend/result/*.ejs"],
             //Які завдання виконувати під час зміни в файлах
             tasks: ['browserify:test']
         }
